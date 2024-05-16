@@ -6,10 +6,23 @@ import axios from 'axios';
 export default function App() {
   const [youtubeUrl, setYoutubeUrl] = useState('');
   const [processing, setProcessing] = useState(false);
+  const [videoId, setVideoId] = React.useState('');
+
+  const extractVideoId = (url) => {
+    const match = url.match(/[?&]v=([^&]+)/);
+    return match && match[1];
+  };
+
+  const handleYoutubeUrlChange = (url) => {
+    setYoutubeUrl(url);
+    const id = extractVideoId(url);
+    setVideoId(id);
+  };
+
   const handleDownload = async () => {
     try {
       setProcessing(true);
-      const response = await axios.get('http://localhost:3000/api/' + youtubeUrl);
+      const response = await axios.get('http://localhost:3000/api/' + videoId);
       console.log('Audio processing complete');
     } catch (error) {
       Alert.alert('Error', error.message);
@@ -31,7 +44,7 @@ export default function App() {
       </View>
       <TextInput
         value={youtubeUrl}
-        onChangeText={setYoutubeUrl}
+        onChangeText={handleYoutubeUrlChange}
         style={styles.input}
         placeholder="Enter YouTube URL"
       />
