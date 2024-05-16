@@ -17,7 +17,7 @@ YouTube Music Downloader is a React Native application designed to simplify the 
 ## Usage
 
 1. **Input YouTube Video ID**: Enter the ID of the YouTube video from which you want to extract the music.
-2. **Initiate Download**: Press the download button to initiate the download process.
+2. **Initiate Download**: Press the download button to initiate the download process. The mp3 will be downlaoded with 320kbps and the location would be inside your AFDataManager
 3. **Enjoy Your Music**: Once the download is complete, enjoy your favorite tunes offline, directly from your device.
 
 ## Scope for Improvement
